@@ -1,0 +1,32 @@
+<div class="container my-4">
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <h2 for="statusSelect">Filter by Status:</h2>
+      <select class="form-control" id="statusSelect" [(ngModel)]="selectedStatus" (change)="getTransactionsByByStatus()">
+        <option *ngFor="let status of statusArray" [value]="status.value">{{ status.name }}</option>
+      </select>
+    </div>
+  </div>
+<h3 class="mb-3">
+  Transaction data From Nodejs API, Using Mongo DB and Exprress.js
+</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.Comments }}</td>
+        <td><a [routerLink]="['/transaction', transaction.id]" class="btn btn-sm btn-primary">View</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

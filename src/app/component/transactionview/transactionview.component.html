@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Comment</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.comment }}</td>
+        <td><a [routerLink]="['/transaction', transaction.id]" class="btn btn-sm btn-primary">View</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

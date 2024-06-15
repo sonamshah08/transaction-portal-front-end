@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>Transaction Details</h2>
+      <div *ngIf="transaction" class="transaction-details">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Field</th>
+                <td>Requirements</td>
+              </tr>
+              <tr>
+                <th>ID</th>
+                <td>{{ transaction.id }}</td>
+              </tr>
+              <tr>
+                <th>Date</th>
+                <td>{{ transaction.date }}</td>
+              </tr>
+              <tr>
+                <th>Comment</th>
+                <td>
+                  <ng-container *ngIf="!edit; else editCommentTemplate">
+                    <span>{{ transaction.comment }}</span>
+                    <button class="btn btn-sm btn-primary ml-2" (click)="editComment()">Edit</button>
+                  </ng-container>
+                  <ng-template #editCommentTemplate>
+                    <input type="text" [(ngModel)]="newComment" class="form-control" pattern="[a-zA-Z0-9\s]+" required>
+                    <div class="mt-2">
+                      <button class="btn btn-sm btn-success" (click)="saveComment()">Save</button>
+                      <button class="btn btn-sm btn-secondary ml-2" (click)="cancelEdit()">Cancel</button>
+                    </div>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <div class="mt-3">
+        <button class="btn btn-primary" (click)="goBack()">Back to List</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
